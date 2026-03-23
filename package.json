@@ -7,7 +7,8 @@
   "format": "prettier --write .",
   "lint": "eslint .",
   "lint:fix": "eslint . --fix",
-  "test": "jest"
+  "test": "jest",
+  "test:coverage": "jest --coverage --runInBand"
 },
   "dependencies": {
     "cookie-parser": "~1.4.4",
