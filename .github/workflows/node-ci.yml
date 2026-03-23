@@ -2,7 +2,7 @@ name: Node.js CI
 
 on:
   push:
-    branches: ["main"] # efe
+    branches: ["main"] # efe 2
   pull_request:
     branches: ["main"]
   workflow_dispatch:
