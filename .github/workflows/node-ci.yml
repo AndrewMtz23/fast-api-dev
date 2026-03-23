@@ -9,7 +9,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
+  IMAGE_NAME: andrewmtz23/fast-api-dev
 
 jobs:
   test:
@@ -191,11 +191,11 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-            docker stop my-node-app || true
-            docker rm my-node-app || true
-            docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:main
-            docker run -d \
+            echo ${{ secrets.GITHUB_TOKEN }} | sudo docker login ghcr.io -u ${{ github.actor }} --password-stdin
+            sudo docker stop my-node-app || true
+            sudo docker rm my-node-app || true
+            sudo docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:main
+            sudo docker run -d \
               --name my-node-app \
               -p 3000:3000 \
               --restart always \
