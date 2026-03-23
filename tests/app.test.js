@@ -86,5 +86,12 @@ describe('Suite de Pruebas de Calidad de Software', () => {
       expect(response.body).toHaveProperty('totalOrders')
       expect(response.body).toHaveProperty('environment', 'demo')
     })
+
+    test('GET /monitoring/metrics - Debe exponer metricas Prometheus', async () => {
+      const response = await request(app).get('/monitoring/metrics')
+      expect(response.statusCode).toBe(200)
+      expect(response.text).toContain('http_requests_total')
+      expect(response.text).toContain('process_cpu_user_seconds_total')
+    })
   })
 })

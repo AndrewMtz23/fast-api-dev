@@ -1,0 +1,12 @@
+global:
+  scrape_interval: 10s
+
+scrape_configs:
+  - job_name: 'servidor'
+    static_configs:
+      - targets: ['node-exporter:9100']
+
+  - job_name: 'aplicacion_nodejs'
+    metrics_path: /monitoring/metrics
+    static_configs:
+      - targets: ['app-node:3000']
