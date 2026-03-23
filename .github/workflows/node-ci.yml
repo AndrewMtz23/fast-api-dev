@@ -31,10 +31,33 @@ jobs:
       - name: Run tests
         run: npm test
 
+  sonar-analysis:
+    name: SonarQube SAST Analysis
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run SonarQube scan
+        uses: SonarSource/sonarqube-scan-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        with:
+          args: >
+            -Dsonar.projectKey=Fast-Api-Sonnar
+            -Dsonar.qualitygate.wait=true
+
   k6-load-test:
     name: K6 Load Tests
     runs-on: ubuntu-latest
-    needs: test
+    needs:
+      - test
+      - sonar-analysis
     timeout-minutes: 15
 
     steps:
