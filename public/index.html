@@ -1,11 +1,118 @@
-<html>
+<!DOCTYPE html>
+<html lang="es">
   <head>
-    <title>Express</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fast API Dev</title>
     <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
-
   <body>
-    <h1>Express</h1>
-    <p>Welcome to Express</p>
+    <div class="page-shell">
+      <header class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Node + Express + Static Data</p>
+          <h1>Una API ligera con una portada mucho mas presentable</h1>
+          <p class="hero-text">
+            Este proyecto expone endpoints simples de salud, usuarios e inventario.
+            No usa base de datos y trabaja con datos estaticos para pruebas y demo.
+          </p>
+          <div class="hero-actions">
+            <a href="/health" class="button button-dark">Ver health</a>
+            <a href="/items" class="button button-light">Ver inventario</a>
+          </div>
+        </div>
+        <div class="hero-panel">
+          <div class="stat-card">
+            <span class="stat-label">Estado</span>
+            <strong>API lista para demo</strong>
+            <span class="stat-detail">Express 4 con pruebas en Jest y Supertest</span>
+          </div>
+          <div class="mini-grid">
+            <article>
+              <span>6</span>
+              <p>Endpoints principales</p>
+            </article>
+            <article>
+              <span>0</span>
+              <p>Base de datos conectada</p>
+            </article>
+            <article>
+              <span>100%</span>
+              <p>Datos estaticos</p>
+            </article>
+          </div>
+        </div>
+      </header>
+
+      <main class="content">
+        <section class="section">
+          <div class="section-heading">
+            <p class="eyebrow">Endpoints</p>
+            <h2>Lo que ya expone el proyecto</h2>
+          </div>
+          <div class="endpoint-grid">
+            <article class="endpoint-card">
+              <span class="method">GET</span>
+              <h3>/health</h3>
+              <p>Regresa el estado del servicio y el uptime actual.</p>
+            </article>
+            <article class="endpoint-card">
+              <span class="method">GET</span>
+              <h3>/items</h3>
+              <p>Entrega una lista estatica de productos con stock.</p>
+            </article>
+            <article class="endpoint-card">
+              <span class="method">GET</span>
+              <h3>/users</h3>
+              <p>Entrega una lista estatica de usuarios y roles.</p>
+            </article>
+            <article class="endpoint-card">
+              <span class="method">GET</span>
+              <h3>/categories</h3>
+              <p>Entrega categorias estaticas para clasificar el inventario.</p>
+            </article>
+            <article class="endpoint-card">
+              <span class="method">GET</span>
+              <h3>/orders</h3>
+              <p>Entrega ordenes demo con cliente, total y estado.</p>
+            </article>
+            <article class="endpoint-card">
+              <span class="method">GET</span>
+              <h3>/metrics</h3>
+              <p>Entrega metricas agregadas para la demo del proyecto.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section split-layout">
+          <div>
+            <div class="section-heading">
+              <p class="eyebrow">Mock Data</p>
+              <h2>Datos de ejemplo</h2>
+            </div>
+            <div class="data-stack">
+              <article class="data-card">
+                <h3>Inventario</h3>
+                <p>Laptop y Mouse con stock disponible para pruebas.</p>
+              </article>
+              <article class="data-card">
+                <h3>Usuarios</h3>
+                <p>Admin, editor y viewer sin autenticacion ni persistencia.</p>
+              </article>
+            </div>
+          </div>
+          <aside class="code-card">
+            <pre>{
+  "status": "OK",
+  "uptime": 123.45
+}</pre>
+            <pre>[
+  { "id": 1, "name": "Laptop", "stock": 10 },
+  { "id": 2, "name": "Mouse", "stock": 50 }
+]</pre>
+          </aside>
+        </section>
+      </main>
+    </div>
   </body>
 </html>
