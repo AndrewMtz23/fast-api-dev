@@ -79,19 +79,6 @@ jobs:
             --summary-export artifacts/k6-summary.json \
             k6/api-load-test.js | tee artifacts/k6-console.txt
 
-      - name: Stream results to Grafana Cloud k6
-        if: ${{ secrets.K6_CLOUD_TOKEN != '' && secrets.K6_CLOUD_PROJECT_ID != '' }}
-        uses: grafana/run-k6-action@v1
-        env:
-          BASE_URL: http://127.0.0.1:3000
-          K6_CLOUD_TOKEN: ${{ secrets.K6_CLOUD_TOKEN }}
-          K6_CLOUD_PROJECT_ID: ${{ secrets.K6_CLOUD_PROJECT_ID }}
-        with:
-          path: |
-            ./k6/api-load-test.js
-          cloud-run-locally: true
-          debug: true
-
       - name: Upload load test artifacts
         if: always()
         uses: actions/upload-artifact@v4
